@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Read(//usr/local/bin/**)",
+      "Read(//Users/yaelfrydman/.nvm/versions/**)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git --version)",
+      "Bash(gh --version)"
+    ]
+  }
+}

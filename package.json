@@ -1,0 +1,13 @@
+{
+  "name": "yom-haatzmaut-rsvp",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n \"server,client\" -c \"blue,cyan\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm install --prefix client && npm install --prefix server && npm run build --prefix client && npm run build --prefix server",
+    "start": "node server/dist/index.js",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
