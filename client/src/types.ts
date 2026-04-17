@@ -1,7 +1,12 @@
+export interface MeatItem {
+  item: string;
+  qty: number;
+}
+
 export interface RSVPData {
   name: string;
-  meat: string;
-  drink_type: string;
+  meat: string;        // JSON: MeatItem[]
+  drink_type: string;  // JSON: string[]
   drink_detail: string;
 }
 

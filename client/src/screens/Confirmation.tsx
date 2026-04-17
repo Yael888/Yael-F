@@ -1,13 +1,20 @@
-import { RSVPData } from '../types';
+import { MeatItem, RSVPData } from '../types';
 
 interface Props {
   data: RSVPData;
 }
 
+function parseMeat(raw: string): MeatItem[] {
+  try { return JSON.parse(raw); } catch { return [{ item: raw, qty: 1 }]; }
+}
+
+function parseDrinks(raw: string): string[] {
+  try { return JSON.parse(raw); } catch { return [raw]; }
+}
+
 export default function Confirmation({ data }: Props) {
-  const drinkDisplay = data.drink_detail
-    ? `${data.drink_type} — ${data.drink_detail}`
-    : data.drink_type;
+  const meatItems = parseMeat(data.meat);
+  const drinks = parseDrinks(data.drink_type);
 
   return (
     <div className="screen-card confirmation-card">
@@ -20,13 +27,23 @@ export default function Confirmation({ data }: Props) {
           <span className="summary-label">שם</span>
           <span className="summary-value">{data.name}</span>
         </div>
-        <div className="summary-row">
-          <span className="summary-label">מנה</span>
-          <span className="summary-value">{data.meat}</span>
+
+        <div className="summary-row summary-row--col">
+          <span className="summary-label">על האש</span>
+          <ul className="summary-list">
+            {meatItems.map((m, i) => (
+              <li key={i}>{m.item} × {m.qty}</li>
+            ))}
+          </ul>
         </div>
-        <div className="summary-row">
-          <span className="summary-label">משקה</span>
-          <span className="summary-value">{drinkDisplay}</span>
+
+        <div className="summary-row summary-row--col">
+          <span className="summary-label">משקאות</span>
+          <ul className="summary-list">
+            {drinks.map((d, i) => (
+              <li key={i}>{d}</li>
+            ))}
+          </ul>
         </div>
       </div>
 

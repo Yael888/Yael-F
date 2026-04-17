@@ -390,6 +390,113 @@ body {
   text-align: left;
 }
 
+/* ─── Quantity stepper ───────────────────────────── */
+
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1.5px solid var(--orange);
+  background: var(--orange-bg);
+  color: var(--orange);
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+  padding: 0;
+  font-family: inherit;
+}
+
+.qty-btn:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.qty-num {
+  min-width: 22px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+/* Other section (free text + qty) */
+.other-section {
+  background: var(--blue-bg);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin: -8px 0 20px;
+}
+
+.other-section .text-input {
+  margin-bottom: 12px;
+}
+
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.qty-row-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-mid);
+}
+
+/* ─── Summary list (confirmation) ────────────────── */
+
+.summary-row--col {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.summary-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-start;
+}
+
+.summary-list li {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  background: var(--white);
+  border-radius: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--card-border);
+}
+
+/* ─── Table tags ─────────────────────────────────── */
+
+.tag {
+  display: inline-block;
+  background: var(--blue-bg);
+  color: var(--blue-deep);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 2px 2px 2px 0;
+  white-space: nowrap;
+}
+
 /* ─── Sub-options section ────────────────────────── */
 
 .sub-section {

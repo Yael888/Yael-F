@@ -6,7 +6,11 @@
       "Read(//Users/yaelfrydman/.nvm/versions/**)",
       "mcp__Claude_Preview__preview_start",
       "Bash(git --version)",
-      "Bash(gh --version)"
+      "Bash(gh --version)",
+      "mcp__mcp-registry__search_mcp_registry",
+      "Bash(git config:*)",
+      "Bash(security find-internet-password:*)",
+      "Bash(ssh-keygen -t ed25519 -C \"yael-github\" -f ~/.ssh/id_github_yael -N \"\")"
     ]
   }
 }

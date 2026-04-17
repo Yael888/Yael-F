@@ -4,7 +4,7 @@ import NameInput from './screens/NameInput';
 import MeatQuestion from './screens/MeatQuestion';
 import DrinkQuestion from './screens/DrinkQuestion';
 import Confirmation from './screens/Confirmation';
-import { RSVPData } from './types';
+import { MeatItem, RSVPData } from './types';
 
 type Screen = 'landing' | 'name' | 'meat' | 'drink' | 'confirmation';
 
@@ -13,8 +13,8 @@ export default function RSVPFlow() {
   const [screenKey, setScreenKey] = useState(0);
   const [data, setData] = useState<RSVPData>({
     name: '',
-    meat: '',
-    drink_type: '',
+    meat: '[]',
+    drink_type: '[]',
     drink_detail: '',
   });
 
@@ -39,9 +39,8 @@ export default function RSVPFlow() {
   return (
     <div className="app-wrapper">
       <div key={screenKey} className="screen-container">
-        {screen === 'landing' && (
-          <Landing onStart={() => goTo('name')} />
-        )}
+        {screen === 'landing' && <Landing onStart={() => goTo('name')} />}
+
         {screen === 'name' && (
           <NameInput
             onNext={(name) => {
@@ -50,23 +49,30 @@ export default function RSVPFlow() {
             }}
           />
         )}
+
         {screen === 'meat' && (
           <MeatQuestion
-            onNext={(meat) => {
-              setData((d) => ({ ...d, meat }));
+            onNext={(selections: MeatItem[]) => {
+              setData((d) => ({ ...d, meat: JSON.stringify(selections) }));
               goTo('drink');
             }}
           />
         )}
+
         {screen === 'drink' && (
           <DrinkQuestion
-            onNext={(drink_type, drink_detail) => {
-              const finalData = { ...data, drink_type, drink_detail };
+            onNext={(drinks: string[]) => {
+              const finalData: RSVPData = {
+                ...data,
+                drink_type: JSON.stringify(drinks),
+                drink_detail: '',
+              };
               setData(finalData);
               submitRSVP(finalData);
             }}
           />
         )}
+
         {screen === 'confirmation' && <Confirmation data={data} />}
       </div>
     </div>
